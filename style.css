@@ -1,0 +1,209 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 55%, #9b59b6 100%);
+  font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+  color: #2d3047;
+}
+
+/* 카드 */
+.game {
+  padding: 28px 28px 32px;
+  text-align: center;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(45, 30, 90, 0.35);
+}
+
+h1 {
+  margin: 0 0 18px;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.scores {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.score-box {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #7a7e96;
+  background: #f4f5fb;
+  border-radius: 14px;
+}
+
+.score-box strong {
+  display: block;
+  font-size: 1.6rem;
+  color: #2d3047;
+}
+
+/* 속도 선택 + 소리 버튼 */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.speed-group {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: #f4f5fb;
+  border-radius: 999px;
+}
+
+.speed-group .speed-btn {
+  flex: 1;
+  padding: 8px 6px;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.speed-btn,
+.sound-btn {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  color: #667eea;
+  background: transparent;
+  box-shadow: none;
+}
+
+.speed-btn:hover,
+.sound-btn:hover {
+  background: #e0e4fb;
+  box-shadow: none;
+  filter: none;
+}
+
+/* 선택된 속도 강조 */
+.speed-btn.active,
+.speed-btn.active:hover {
+  color: #fff;
+  background: linear-gradient(135deg, #7f8ff4, #667eea);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.45);
+}
+
+.sound-btn {
+  background: #eef0fd;
+}
+
+.sound-btn:disabled {
+  opacity: 0.45;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* 소리 꺼짐 상태는 흐리게 */
+.sound-btn.off {
+  color: #9a9db3;
+  background: #f4f5fb;
+}
+
+/* 캔버스와 오버레이 */
+.board {
+  position: relative;
+  width: 400px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(31, 33, 64, 0.35),
+              inset 0 0 0 3px #3a3d6b;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  background: rgba(20, 22, 46, 0.78);
+  backdrop-filter: blur(3px);
+  border-radius: 16px;
+  color: #fff;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-msg {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+button {
+  padding: 14px 32px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #7f8ff4, #667eea);
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.45);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease,
+              background 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(102, 126, 234, 0.55);
+  filter: brightness(1.08);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(102, 126, 234, 0.4);
+}
+
+button:focus-visible {
+  outline: 3px solid #c9b6f2;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .game {
+    padding: 20px 14px 24px;
+  }
+
+  .score-box {
+    padding: 8px 6px;
+    font-size: 0.8rem;
+  }
+
+  .speed-group .speed-btn {
+    font-size: 0.78rem;
+  }
+}
